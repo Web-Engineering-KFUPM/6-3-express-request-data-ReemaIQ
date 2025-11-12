@@ -105,10 +105,23 @@ LAB SETUP INSTRUCTIONS
  */
 
 import express from "express";
+import cors from "cors";
 const app = express();
 
 
 // create server
+const PORT = 3000;
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.json({ ok: true, msg: "API is up" });
+});
+
+app.listen(PORT, () => {
+    console.log(`API running at http://localhost:${PORT}`);
+});
 
 
 // Query params: /echo?name=Ali&age=22
